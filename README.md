@@ -3,6 +3,7 @@
 my neovim config
 
 stuff i know for sure needs to be installed:
-    - neovim (obviously)
-    - ripgrep
-    - gcc
+
+- neovim (obviously)
+- ripgrep
+- gcc
