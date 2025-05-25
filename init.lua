@@ -1,3 +1,18 @@
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
+
+vim.cmd("set number")
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+vim.keymap.set("i", "jk", "<Esc>", {})
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
+vim.keymap.set("t", "jk", "<C-\\><C-n>", {})
+vim.keymap.set("n", "<leader>bt", ":below terminal<CR>", {})
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -15,6 +30,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-require("vim-options")
+-- require("vim-options")
 require("lazy").setup("plugins")
 
