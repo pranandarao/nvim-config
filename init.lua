@@ -13,7 +13,24 @@ vim.g.maplocalleader = "\\"
 vim.keymap.set("i", "jk", "<Esc>", {})
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 vim.keymap.set("t", "jk", "<C-\\><C-n>", {})
+-- vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>:bd!<CR>", {})
 vim.keymap.set("n", "<leader>bt", ":belowright 12split | terminal<CR>", {})
+
+-- Function to close terminal buffer
+---@diagnostic disable-next-line: lowercase-global
+function close_terminal()
+  local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+  if buftype == "terminal" then
+    vim.cmd("bd!")  -- Force close terminal buffer
+  end
+end
+
+-- Terminal mode mapping
+vim.api.nvim_set_keymap("t", "<Esc><Esc>", [[<C-\><C-n>:lua close_terminal()<CR>]], { noremap = true, silent = true })
+
+-- Normal mode mapping (will check if in terminal buffer before closing)
+vim.api.nvim_set_keymap("n", "<Esc><Esc>", [[:lua close_terminal()<CR>]], { noremap = true, silent = true })
+
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
