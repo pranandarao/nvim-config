@@ -1,4 +1,8 @@
-vim.o.shell = "powershell"
+if vim.loop.os_uname().sysname == "Darwin" then
+  vim.o.shell = "zsh"
+else
+  vim.o.shell = "powershell"
+end
 
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
