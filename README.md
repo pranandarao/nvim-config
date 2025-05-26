@@ -7,3 +7,4 @@ stuff i know for sure needs to be installed:
 - ripgrep
 - gcc
 - a nerd font
+- any of the linters/formatters in none-ls.lua via Mason
